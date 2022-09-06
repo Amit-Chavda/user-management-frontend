@@ -5,7 +5,6 @@ export default function ErrroModal(props) {
     let isErrorModal = props.isErrorModal
     let errorObject = props.errorObject
     let hideModal=props.onClickHide;
-    //toggle={() => setIsErrorModal(!isErrorModal)}>
     return (
         <Modal
             style={{ color: 'red' }}

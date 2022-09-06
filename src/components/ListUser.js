@@ -1,9 +1,6 @@
 import { DataGrid } from '@mui/x-data-grid';
 import { useState, useEffect, useReducer } from "react";
 import axios from "axios"
-import Container from 'react-bootstrap/Container';
-import Row from 'react-bootstrap/Row';
-import Col from 'react-bootstrap/Col';
 import CreateUser from './CreateUser';
 import ColumnNameAdapter from '../adapter/ColumnNameAdapter';
 import DeleteUser from './DeleteUser';
@@ -50,7 +47,11 @@ export default function ListUser() {
         rowsPerPageOptions={[12]}
         checkboxSelection
         onSelectionModelChange={(ids) => onRowsSelectionHandler(ids)}
-      />
+        sx={{
+          boxShadow: 2,
+          '& .MuiDataGrid-row:hover': {
+            color: 'primary.main',
+          }}} />
       <DeleteUser handleOnDelete={handleOnDelete} />
     </div>
   );
