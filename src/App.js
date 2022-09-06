@@ -1,10 +1,10 @@
 import './App.css';
-import UserTableView from "./components/UserTableView";
+import ListUser from "./components/ListUser";
 
 function App() {
   return (
     <div style={{ width: '100%' }}>
-      <UserTableView />
+      <ListUser />
     </div>
   );
 }
