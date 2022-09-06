@@ -3,10 +3,11 @@ import axios from "axios"
 import ErrroModal from "./ErrorModal";
 import AddUserModal from "./AddUserModal";
 
-export default function CreateUser() {
+export default function CreateUser(props) {
     const BASE_URL = process.env.REACT_APP_API_BASE_URL
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [isErrorModal, setIsErrorModal] = useState(false);
+    let forceUpdate = props.forceUpdate
 
     const [errorObject, setErrorObject] = useState({
         statusCode: "",
@@ -28,8 +29,8 @@ export default function CreateUser() {
         axios.post(BASE_URL + "/add", userData)
             .then(res => {
                 if (res.status === 200) {
-                    console.log(res)
-                    setUserData({})
+                    setUserData({});
+                    setIsModalOpen(!isModalOpen)
                 } else {
                     console.log("Error occured while submitting")
                 }
@@ -42,8 +43,8 @@ export default function CreateUser() {
                     timestamp: data.timestamp
                 });
                 setIsErrorModal(true)
-
             });
+            forceUpdate()
     };
 
     let handleChange = (e) => {
